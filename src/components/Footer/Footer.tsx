@@ -20,7 +20,14 @@ const Footer: React.FC<FooterProps> = ({data}) => {
   ];
 
   const renderEachRow = (row: any, index) => {
-    return <FooterRow key={index} label={row.label} value={row.value} />;
+    return (
+      <FooterRow
+        key={index}
+        label={row.label}
+        value={row.value}
+        isLast={index === rows.length - 1}
+      />
+    );
   };
 
   return <View style={styles.container}>{rows.map(renderEachRow)}</View>;

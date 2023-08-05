@@ -5,12 +5,17 @@ import {getCurrencySymbol} from '../../utils/commonUtils';
 interface FooterRowProps {
   label: string;
   value: number;
+  isLast?: boolean;
 }
 
-const FooterRow: React.FC<FooterRowProps> = ({label, value}) => {
+const FooterRow: React.FC<FooterRowProps> = ({
+  label,
+  value,
+  isLast = false,
+}) => {
   const symbolCurrency = getCurrencySymbol({country: 'IN'});
   return (
-    <View style={styles.row} key={label}>
+    <View style={isLast ? styles.rowLast : styles.row} key={label}>
       <Text style={styles.boldText}>{label}</Text>
       <Text>
         {symbolCurrency}
@@ -26,6 +31,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
+  },
+  rowLast: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 16,
   },
   boldText: {
     fontWeight: 'bold',
