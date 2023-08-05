@@ -13,7 +13,7 @@ const App: React.FC = () => {
     <View style={styles.main}>
       <HeaderStrip text="Upstox Holding" />
       <DataWrapper loading={loading} error={error} onRetry={retry}>
-        <InvestMentDetails data={data?.data || []} />
+        <InvestMentDetails refetch={retry} data={data?.data || []} />
       </DataWrapper>
     </View>
   );

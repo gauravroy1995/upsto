@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, RefreshControl, StyleSheet, View} from 'react-native';
 import {ResponseData} from '../../types/commonTypes';
 import {InvestMentRow} from './InvestmentRow';
 import Footer from '../Footer/Footer';
@@ -8,10 +8,11 @@ const Separator = () => <View style={styles.separator} />;
 
 type InvestMentDetailsProps = {
   data: ResponseData[];
+  refetch: () => void;
 };
 
 export const InvestMentDetails: React.FC = (props: InvestMentDetailsProps) => {
-  const {data = []} = props;
+  const {data = [], refetch} = props;
 
   const renderInvestments = ({item}: {item: ResponseData}) => {
     return <InvestMentRow data={item} />;
@@ -28,6 +29,9 @@ export const InvestMentDetails: React.FC = (props: InvestMentDetailsProps) => {
         ItemSeparatorComponent={Separator}
         style={styles.main}
         contentContainerStyle={styles.contentStyle}
+        refreshControl={
+          <RefreshControl refreshing={false} onRefresh={refetch} />
+        }
       />
       <Footer data={data} />
     </View>
