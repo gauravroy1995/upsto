@@ -11,7 +11,7 @@ export const useFetchData = () => {
     try {
       const response = await fetch(BASE_URL);
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Error fetching data');
       }
 
       const jsonData = await response.json();

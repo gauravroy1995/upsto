@@ -1,8 +1,8 @@
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import {ResponseData} from '../types/commonTypes';
+import {ResponseData} from '../../types/commonTypes';
 import {InvestMentRow} from './InvestmentRow';
-import Footer from './Footer';
+import Footer from '../Footer/Footer';
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -17,14 +17,17 @@ export const InvestMentDetails: React.FC = (props: InvestMentDetailsProps) => {
     return <InvestMentRow data={item} />;
   };
 
+  const keyExtract = item => item.isin;
+
   return (
     <View style={styles.main}>
       <FlatList
         data={data}
         renderItem={renderInvestments}
-        keyExtractor={item => item.isin}
+        keyExtractor={keyExtract}
         ItemSeparatorComponent={Separator}
-        style={{flex: 1}}
+        style={styles.main}
+        contentContainerStyle={styles.contentStyle}
       />
       <Footer data={data} />
     </View>
@@ -34,6 +37,9 @@ export const InvestMentDetails: React.FC = (props: InvestMentDetailsProps) => {
 const styles = StyleSheet.create({
   main: {
     flex: 1,
+  },
+  contentStyle: {
+    paddingBottom: 100,
   },
   listItemContainer: {
     backgroundColor: '#fff',

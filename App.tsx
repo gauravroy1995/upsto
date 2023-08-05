@@ -1,27 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
-import HeaderStrip from './src/components/Header';
+import HeaderStrip from './src/components/Header/Header';
+import {InvestMentDetails} from './src/components/Investment/Investments';
+import DataWrapper from './src/components/common/ErrorStateWrapper';
 import {useFetchData} from './src/network/useFetchQuery';
-import DataWrapper from './src/components/ErrorStateWrapper';
-import {InvestMentDetails} from './src/components/Investments';
 
 const App: React.FC = () => {
   const {data, loading, error, retry} = useFetchData();
 
   return (
     <View style={styles.main}>
-      <HeaderStrip text="Upstox" />
+      <HeaderStrip text="Upstox Holding" />
       <DataWrapper loading={loading} error={error} onRetry={retry}>
         <InvestMentDetails data={data?.data || []} />
       </DataWrapper>

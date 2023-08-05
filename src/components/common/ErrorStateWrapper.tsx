@@ -10,8 +10,8 @@ import {
 type DataWrapperProps = {
   loading: boolean;
   error: string | null;
-  data: ApiResponse | null;
   onRetry: () => void;
+  children: any;
 };
 
 const DataWrapper: React.FC<DataWrapperProps> = ({

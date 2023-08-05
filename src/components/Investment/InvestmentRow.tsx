@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ResponseData} from '../types/commonTypes';
-import {extractProfitLoss} from '../utils/investmentUtil';
-import {getCurrencySymbol} from '../utils/commonUtils';
+import {ResponseData} from '../../types/commonTypes';
+import {extractProfitLoss} from '../../utils/investmentUtil';
+import {getCurrencySymbol} from '../../utils/commonUtils';
 
 interface ListItemProps {
   data: ResponseData;
@@ -23,7 +23,7 @@ export const InvestMentRow: React.FC<ListItemProps> = ({data}) => {
           LTP:
           <Text style={styles.ltpValueText}>
             {symbolCurrency}
-            {ltp}
+            {ltp.toFixed(2)}
           </Text>
         </Text>
       </View>
