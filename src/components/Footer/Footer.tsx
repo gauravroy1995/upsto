@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({data}) => {
     {label: 'Current Value :', value: totalCurrentValue},
     {label: 'Total Investment for all holdings:', value: totalInvestmentValue},
     {label: "Today's Profit & Loss:", value: totalTodayPNL},
-    {label: 'Profit and Loss:', value: totalPNL},
+    {label: 'Profit & Loss:', value: totalPNL},
   ];
 
   const renderEachRow = (row: any, index) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 
 import HeaderStrip from './src/components/Header/Header';
 import {InvestMentDetails} from './src/components/Investment/Investments';
@@ -10,12 +10,12 @@ const App: React.FC = () => {
   const {data, loading, error, retry} = useFetchData();
 
   return (
-    <View style={styles.main}>
+    <SafeAreaView style={styles.main}>
       <HeaderStrip text="Upstox Holding" />
       <DataWrapper loading={loading} error={error} onRetry={retry}>
         <InvestMentDetails refetch={retry} data={data?.data || []} />
       </DataWrapper>
-    </View>
+    </SafeAreaView>
   );
 };
 
