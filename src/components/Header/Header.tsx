@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {typography} from '../../styles/typography';
 
 interface HeaderStripProps {
   text: string;
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: typography.fontSize.large,
     fontWeight: 'bold',
   },
 });

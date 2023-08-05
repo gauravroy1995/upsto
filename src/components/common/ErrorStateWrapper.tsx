@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import {typography} from '../../styles/typography';
 
 type DataWrapperProps = {
   loading: boolean;
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   errorText: {
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     marginBottom: 16,
   },
   retryButton: {
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     fontWeight: 'bold',
   },
   main: {

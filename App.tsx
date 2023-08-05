@@ -5,6 +5,7 @@ import HeaderStrip from './src/components/Header/Header';
 import {InvestMentDetails} from './src/components/Investment/Investments';
 import DataWrapper from './src/components/common/ErrorStateWrapper';
 import {useFetchData} from './src/network/useFetchQuery';
+import {typography} from './src/styles/typography';
 
 const App: React.FC = () => {
   const {data, loading, error, retry} = useFetchData();
@@ -25,12 +26,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: typography.fontSize.extraLarge,
     fontWeight: '600',
   },
   sectionDescription: {
     marginTop: 8,
-    fontSize: 18,
+    fontSize: typography.fontSize.medium,
     fontWeight: '400',
   },
   highlight: {

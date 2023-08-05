@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {ResponseData} from '../../types/commonTypes';
 import {extractFooterInvestmentData} from '../../utils/investmentUtil';
 import FooterRow from './FooterRow';
+import {typography} from '../../styles/typography';
 
 interface FooterProps {
   data: ResponseData[];
@@ -14,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({data}) => {
 
   const rows = [
     {label: 'Current Value :', value: totalCurrentValue},
-    {label: 'Total Investment for all holdings:', value: totalInvestmentValue},
+    {label: 'Total Investment:', value: totalInvestmentValue},
     {label: "Today's Profit & Loss:", value: totalTodayPNL},
     {label: 'Profit & Loss:', value: totalPNL},
   ];
@@ -56,12 +57,12 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontWeight: '900',
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     color: '#000',
   },
   normalText: {
     fontWeight: '400',
-    fontSize: 15,
+    fontSize: typography.fontSize.regular,
   },
 });
 

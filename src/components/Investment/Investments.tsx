@@ -3,6 +3,7 @@ import {FlatList, RefreshControl, StyleSheet, View} from 'react-native';
 import {ResponseData} from '../../types/commonTypes';
 import {InvestMentRow} from './InvestmentRow';
 import Footer from '../Footer/Footer';
+import {typography} from '../../styles/typography';
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -56,11 +57,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   symbolText: {
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     color: '#000',
   },
   ltpText: {
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     color: '#000',
   },
   ltpValueText: {
@@ -74,14 +75,14 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   quantityText: {
-    fontSize: 14,
+    fontSize: typography.fontSize.small,
     color: '#000',
   },
   quantityValueText: {
     fontWeight: 'bold',
   },
   closeText: {
-    fontSize: 14,
+    fontSize: typography.fontSize.small,
     color: '#000',
   },
   closeValueText: {

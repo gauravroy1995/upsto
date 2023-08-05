@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {ResponseData} from '../../types/commonTypes';
 import {extractProfitLoss} from '../../utils/investmentUtil';
 import {getCurrencySymbol} from '../../utils/commonUtils';
+import {typography} from '../../styles/typography';
 
 interface ListItemProps {
   data: ResponseData;
@@ -55,12 +56,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   symbolText: {
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     color: '#000',
     fontWeight: '600',
   },
   ltpText: {
-    fontSize: 16,
+    fontSize: typography.fontSize.regular,
     color: '#000',
   },
   ltpValueText: {
@@ -75,12 +76,12 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   quantityText: {
-    fontSize: 14,
+    fontSize: typography.fontSize.small,
     color: '#000',
   },
 
   closeText: {
-    fontSize: 14,
+    fontSize: typography.fontSize.small,
     color: '#000',
   },
   closeValueText: {
