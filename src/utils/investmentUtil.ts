@@ -5,12 +5,12 @@ export const calculateCurrentValue = (data: ResponseData): number => {
 };
 
 export const calculateInvestmentValue = (data: ResponseData): number => {
-  return parseFloat(data.avg_price) * data.quantity;
+  return parseFloat(data.avgPrice) * data.quantity;
 };
 
 export const extractProfitLoss = (data: ResponseData): string => {
   const currentValue = data.ltp * data.quantity;
-  const investmentValue = parseFloat(data.avg_price) * data.quantity;
+  const investmentValue = parseFloat(data.avgPrice) * data.quantity;
   const pnl = (currentValue - investmentValue).toFixed(2);
   return pnl;
 };

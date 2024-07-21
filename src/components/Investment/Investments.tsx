@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {FlatList, RefreshControl, StyleSheet, View} from 'react-native';
 import {ResponseData} from '../../types/commonTypes';
 import {InvestMentRow} from './InvestmentRow';
 import Footer from '../Footer/Footer';
-import {typography} from '../../styles/typography';
+import {COLORS} from '../../styles/colors';
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -12,14 +12,16 @@ type InvestMentDetailsProps = {
   refetch: () => void;
 };
 
-export const InvestMentDetails: React.FC = (props: InvestMentDetailsProps) => {
+export const InvestMentDetails: React.FC<InvestMentDetailsProps> = (
+  props: InvestMentDetailsProps,
+) => {
   const {data = [], refetch} = props;
 
-  const renderInvestments = ({item}: {item: ResponseData}) => {
+  const renderInvestments = useCallback(({item}: {item: ResponseData}) => {
     return <InvestMentRow data={item} />;
-  };
+  }, []);
 
-  const keyExtract = item => item.isin;
+  const keyExtract = (item: ResponseData) => item.symbol;
 
   return (
     <View style={styles.main}>
@@ -44,53 +46,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentStyle: {
-    paddingBottom: 100,
-  },
-  listItemContainer: {
-    backgroundColor: '#fff',
-  },
-  topRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  symbolText: {
-    fontSize: typography.fontSize.regular,
-    color: '#000',
-  },
-  ltpText: {
-    fontSize: typography.fontSize.regular,
-    color: '#000',
-  },
-  ltpValueText: {
-    fontWeight: 'bold',
-  },
-  bottomRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingBottom: 12,
-  },
-  quantityText: {
-    fontSize: typography.fontSize.small,
-    color: '#000',
-  },
-  quantityValueText: {
-    fontWeight: 'bold',
-  },
-  closeText: {
-    fontSize: typography.fontSize.small,
-    color: '#000',
-  },
-  closeValueText: {
-    fontWeight: 'bold',
+    paddingBottom: 180,
   },
   separator: {
     height: 1,
     marginHorizontal: 20,
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.gray1,
   },
 });
+
+export default InvestMentDetails;

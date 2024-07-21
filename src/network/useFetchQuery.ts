@@ -1,15 +1,17 @@
 import {useState, useEffect, useCallback} from 'react';
+import {NetworkResponse} from './network.types';
 
-const BASE_URL = 'https://run.mocky.io/v3/6d0ad460-f600-47a7-b973-4a779ebbaeaf';
+const BASE_URL = 'https://35dee773a9ec441e9f38d5fc249406ce.api.mockbin.io/';
 
 export const useFetchData = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<NetworkResponse | null>(null);
 
   const fetchData = useCallback(async () => {
     try {
       const response = await fetch(BASE_URL);
+
       if (!response.ok) {
         throw new Error('Error fetching data');
       }
@@ -18,7 +20,11 @@ export const useFetchData = () => {
       setData(jsonData);
       setError(null);
     } catch (err) {
-      setError(err?.message);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred');
+      }
     } finally {
       setLoading(false);
     }
