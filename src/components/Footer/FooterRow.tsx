@@ -1,27 +1,35 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {Animated, StyleSheet, Text} from 'react-native';
 import {getCurrencySymbol} from '../../utils/commonUtils';
+import {COLORS} from '../../styles/colors';
 
 interface FooterRowProps {
   label: string;
   value: number;
   isLast?: boolean;
+  opacity?: Animated.Value;
 }
 
 const FooterRow: React.FC<FooterRowProps> = ({
   label,
   value,
   isLast = false,
+  opacity = 1,
 }) => {
   const symbolCurrency = getCurrencySymbol({country: 'IN'});
   return (
-    <View style={isLast ? styles.rowLast : styles.row} key={label}>
+    <Animated.View
+      style={[
+        isLast ? styles.rowLast : styles.row,
+        {opacity: isLast ? 1 : opacity},
+      ]}
+      key={label}>
       <Text style={styles.boldText}>{label}</Text>
-      <Text>
+      <Text style={styles.secondText}>
         {symbolCurrency}
         {value.toFixed(2)}
       </Text>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -40,6 +48,10 @@ const styles = StyleSheet.create({
   },
   boldText: {
     fontWeight: 'bold',
+    color: COLORS.black,
+  },
+  secondText: {
+    color: COLORS.black,
   },
 });
 

@@ -4,13 +4,14 @@ import {ResponseData} from '../../types/commonTypes';
 import {extractProfitLoss} from '../../utils/investmentUtil';
 import {getCurrencySymbol} from '../../utils/commonUtils';
 import {typography} from '../../styles/typography';
+import {COLORS} from '../../styles/colors';
 
 interface ListItemProps {
   data: ResponseData;
 }
 
 export const InvestMentRow: React.FC<ListItemProps> = ({data}) => {
-  const {symbol = '', ltp = 0, quantity = '', close = ''} = data || {};
+  const {symbol = '', ltp = 0, quantity = ''} = data || {};
 
   const profitLoss = extractProfitLoss(data);
 
@@ -46,7 +47,7 @@ export const InvestMentRow: React.FC<ListItemProps> = ({data}) => {
 
 const styles = StyleSheet.create({
   listItemContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
   },
   topRow: {
     flexDirection: 'row',
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
   },
   symbolText: {
     fontSize: typography.fontSize.regular,
-    color: '#000',
+    color: COLORS.black,
     fontWeight: '600',
   },
   ltpText: {
     fontSize: typography.fontSize.regular,
-    color: '#000',
+    color: COLORS.black,
   },
   ltpValueText: {
     fontWeight: 'bold',
@@ -77,12 +78,12 @@ const styles = StyleSheet.create({
   },
   quantityText: {
     fontSize: typography.fontSize.small,
-    color: '#000',
+    color: COLORS.black,
   },
 
   closeText: {
     fontSize: typography.fontSize.small,
-    color: '#000',
+    color: COLORS.black,
   },
   closeValueText: {
     fontWeight: 'bold',
@@ -90,6 +91,6 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     marginHorizontal: 20,
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.gray1,
   },
 });

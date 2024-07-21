@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {typography} from '../../styles/typography';
+import {COLORS} from '../../styles/colors';
 
 interface HeaderStripProps {
   text: string;
@@ -17,12 +18,12 @@ const HeaderStrip: React.FC<HeaderStripProps> = ({text}) => {
 const styles = StyleSheet.create({
   headerContainer: {
     height: 60,
-    backgroundColor: '#3e1b80',
+    backgroundColor: COLORS.purple1,
     justifyContent: 'center',
     paddingLeft: 16,
   },
   headerText: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: typography.fontSize.large,
     fontWeight: 'bold',
   },

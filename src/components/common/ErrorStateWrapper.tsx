@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {typography} from '../../styles/typography';
+import {COLORS} from '../../styles/colors';
 
 type DataWrapperProps = {
   loading: boolean;
@@ -24,7 +25,7 @@ const DataWrapper: React.FC<DataWrapperProps> = ({
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#000" />
+        <ActivityIndicator size="large" color={COLORS.black} />
       </View>
     );
   }
@@ -60,12 +61,12 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   retryButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: COLORS.purple1,
     padding: 12,
     borderRadius: 8,
   },
   retryButtonText: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: typography.fontSize.regular,
     fontWeight: 'bold',
   },
